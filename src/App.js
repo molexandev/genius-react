@@ -2,8 +2,8 @@
 // import MyClassComponent from './MyClassComponent';
 // import { useState } from 'react';
 // import CounterComponent from './CounterComponent';
-// import ListComponent from './ListComponent';
-import RenderComponent from './RenderComponent';
+import ListComponent from './ListComponent';
+// import RenderComponent from './RenderComponent';
 import './App.css';
 
 function App() {
@@ -12,9 +12,9 @@ function App() {
          <header className="App-header">
             {/* {<HelloWoeldComponent />}
             {<MyClassComponent />} */}
-            {/* <ListComponent /> */}
+            <ListComponent />
             {/* <CounterComponent /> */}
-            <RenderComponent />
+            {/* <RenderComponent /> */}
          </header>
       </div>
    );

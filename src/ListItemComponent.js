@@ -4,8 +4,9 @@ const ListItemComponent = (props) => {
    return (
       <div>
          <li>
-            {props.element} {props.index}
+            {props.index} {props.name}
          </li>
+         {props.children}
       </div>
    );
 };

@@ -1,14 +1,21 @@
 import { useState } from 'react';
 import ListItemComponent from './ListItemComponent';
+import ButtonComponent from './ButtonComponent';
 
-const ListComponent = () => {
-   const [input, setInput] = useState(['']);
-   const [item, setItem] = useState(['First element']);
+const ListComponent = (props) => {
+   const initialValues = [
+      { id: Date.now() + 1, todo: 'first todo', name: 'Olexandr' },
+      { id: Date.now() + 2, todo: 'third todo', name: 'John' },
+      { id: Date.now() + 3, todo: 'fouth todo', name: 'Sarah' },
+   ];
+
+   const [input, setInput] = useState('');
+   const [items, setItems] = useState(initialValues);
 
    const onClickHandler = (input) => {
-      const updatedElement = [...item, input];
-
-      setItem(updatedElement);
+      const newId = Date.now(); // Унікальний id
+      const updatedElement = [...items, { id: newId, name: input }];
+      setItems(updatedElement);
       setInput('');
    };
 
@@ -19,27 +26,40 @@ const ListComponent = () => {
 
    const handleKeyPress = (e) => {
       if (e.key === 'Enter') {
-         const updatedElement = [...item, input];
-         setItem(updatedElement);
+         const newId = Date.now(); // Унікальний id
+         const updatedElement = [...items, { id: newId, name: input }];
+         setItems(updatedElement);
          setInput('');
       }
    };
 
+   const handlerDelete = (id) => {
+      const filteredItems = items.filter((item) => item.id !== id);
+      setItems(filteredItems);
+   };
+
    return (
       <div>
-         <h2>{item.length}</h2>
+         <h2>{items.length}</h2>
          <input
             onChange={onChangeHandler}
             onKeyDown={handleKeyPress}
             value={input}
          />
          <ul>
-            {item.map((element, index) => (
+            {items.map((element, index) => (
                <ListItemComponent
-                  element={element}
-                  index={index}
-                  key={`${index}${element}`}
-               />
+                  key={`${element.id}${index}`}
+                  name={element.name}
+                  id={element.id}
+                  index={index + 1}
+               >
+                  <ButtonComponent
+                     text="Delete"
+                     onClick={() => handlerDelete(element.id)}
+                     type="button"
+                  />
+               </ListItemComponent>
             ))}
          </ul>
          <button onClick={() => onClickHandler(input)}>Add new element</button>
