@@ -7,37 +7,22 @@
 // import RenderComponent from './RenderComponent';
 // import UnmountComponent from './UnmountComponent';
 // import { type } from '@testing-library/user-event/dist/type';
+// import UncontroledForm from './.UncontroledForm';
 import './App.css';
 // import { useState } from 'react';
-import { useRef } from 'react';
+import ControledForms from './ControledForms';
+// import InputData from './InputData';
+// import { useCounter } from './useCounter';
+// import ChildComponent from './ChildComponent';
+// import SecondChildComponent from './SecondChildComponent';
+// import { useRef } from 'react';
 
 function App() {
-   const inputRef = useRef();
-   console.log(inputRef.current);
-
-   const handleFocus = () => {
-      inputRef.current.focus();
-      console.log(inputRef.current.value);
-   };
-
    return (
       <div className="App">
          <header className="App-header">
-            {/* {isShowTimer ? <MyClassComponent /> : <ListComponent />}
-            <button onClick={() => setisShowTimer((prev) => !prev)}>
-               Show timer
-            </button> */}
-            {/* {<HelloWoeldComponent />} */}
-            {/* {<MyClassComponent />} */}
-            {/* <ListComponent /> */}
-            {/* <TodoClassComponent /> */}
-            {/* <CounterComponent /> */}
-            {/* <RenderComponent /> */}
-            {/* {isMounted ? <UnmountComponent /> : <p>Text</p>} */}
-
-            <h1>tesxt</h1>
-            <input ref={inputRef} />
-            <button onClick={handleFocus}>Focus me</button>
+            {/* <UncontroledForm /> */}
+            <ControledForms />
          </header>
       </div>
    );
