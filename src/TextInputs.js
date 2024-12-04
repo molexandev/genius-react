@@ -1,6 +1,3 @@
-// import React from 'react';
-import { debounce } from 'lodash';
-
 const TextInputs = ({ value, setValue }) => {
    const hndleNameChange = (event) => {
       const name = event.target.value;

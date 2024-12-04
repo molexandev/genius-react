@@ -1,30 +1,32 @@
-// import HelloWoeldComponent from './HelloWorldComponent';
-// import MyClassComponent from './MyClassComponent';
-// import { useEffect, useReducer, useState } from 'react';
-// import CounterComponent from './CounterComponent';
-// import ListComponent from './ListComponent';
-// import TodoClassComponent from './TodoClassComponent';
-// import RenderComponent from './RenderComponent';
-// import UnmountComponent from './UnmountComponent';
-// import { type } from '@testing-library/user-event/dist/type';
-// import UncontroledForm from './.UncontroledForm';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Home from './pages/home';
+import About from './pages/about';
+import Contacts from './pages/contacts';
+import NotFound from './pages/404';
 import './App.css';
-// import { useState } from 'react';
-import ControledForms from './ControledForms';
-// import InputData from './InputData';
-// import { useCounter } from './useCounter';
-// import ChildComponent from './ChildComponent';
-// import SecondChildComponent from './SecondChildComponent';
-// import { useRef } from 'react';
 
 function App() {
    return (
-      <div className="App">
-         <header className="App-header">
-            {/* <UncontroledForm /> */}
-            <ControledForms />
-         </header>
-      </div>
+      <Router>
+         {' '}
+         {/* Додаємо BrowserRouter */}
+         <div className="App">
+            <header className="App-header">
+               <Link to="/">Home</Link>
+               <Link to="/contacts">Contact</Link>
+               <Link to="/about">About</Link>
+            </header>
+            <main>
+               <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/contacts" element={<Contacts />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="*" element={<NotFound />} />{' '}
+                  {/* Універсальний шлях для 404 */}
+               </Routes>
+            </main>
+         </div>
+      </Router>
    );
 }
 
